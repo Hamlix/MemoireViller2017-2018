@@ -152,7 +152,7 @@ Les moteurs de recherches d'images inversées permettent de mettre en entrée un
 Des sites proposent de mettre en entrée des couleurs et en sorties de lister des images possédant les couleurs en question. En fonction des sites les images peuvent posséder d'autre couleurs ou n'ont que celles sélectionnées, comme par exemple sur le site labs.tineye.com/multicolr. Cela ne correspond pas non plus à notre recherche. 
 \subsubsection{Google Image}
 Google est connu pour permettre la recherche par mot clef. Mais il permet aussi de mettre en entrée une image pour trouver les images similaires. Faisons l'expérience avec 2 images très différentes. La première provient d'une recherche par mots clefs sur Google Image (Figure 1) et la seconde est une photographie de moi dont je suis l'auteur (Figure 2). 
-    \begin{figure}[!h]
+    \begin{figure}[!ht]
     \centering
         \includegraphics[scale=0.7]{images/telechargement.PNG}
         \caption{Chat de Google Images}
@@ -161,14 +161,14 @@ Google est connu pour permettre la recherche par mot clef. Mais il permet aussi 
     \end{figure}
 En utilisant l'image de chat dans la recherche de Google Image on obtient le résultat ci dessous. (Figure 3) Nous pouvons constater qu'il retourne les sites utilisant l'image fournis et qu'il propose de chercher les images similaires.  Malheureusement, cette recherche va "traduire" en mots clefs notre image initiale pour fournir des images peu similaire. Voir Annexe 1. 
 
-    \begin{figure}[!h]
+    \begin{figure}[!ht]
     \centering
         \includegraphics[scale=1]{images/ResGI.PNG}
         \caption{Résultat de la recherche via une image sur Google}
     \end{figure}
 
 Le résultat des images similaires fournit par google avec la photographie en Figure 2 n'est pas plus concluante non plus. (Figure 4) En effet, Google va aussi "traduire" la photographie en un mot clef : girl, et ressort des images de femmes et d'hommes. Les photographies sont similaire dans leur style. On peut voir qu'il y a une personne sur un fond en général unique mais en rien ces personnes ne ressemblent à Nathanaëlle VILLER. 
-    \begin{figure}[!h]
+    \begin{figure}[!ht]
     \centering
         \includegraphics[scale=0.7]{images/Res3GI.PNG}
         \caption{Résultat de la recherche des images similaires par Google pour la Figure 2}
@@ -186,7 +186,7 @@ Il existe d'autres sites tel que pictriev.com qui déduit si nous sommes un homm
 
 \subsubsection{Google Arts \& Culture}
 Google Arts \& Culture est une application américaine qui permet de trouver son sosie en oeuvre d’art. Google Arts \& Culture a collaboré avec plus de 1 200 musées, galeries et institutions de 70 pays pour rendre leurs expositions accessibles à tous en ligne, sûrement aussi pour avoir une base de données interne à interroger. Malheureusement cette fonctionnalité "trouver son double dans une oeuvre d'art" de l'application n'est disponible qu'aux Etats Unis et un test n'a donc pas pu être possible. Mais nous pouvons trouver des articles qui en parle. Le fonctionnement est simple, il suffit de charger une photographie ou un autoportrait et l'algorithme va analyser les traits du visage à plus de 70 000 portraits provenant de collection du monde entier. Twitter a été rempli de test des internautes américains dont voici un exemple bluffant (Figure 5).
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
         \includegraphics[scale=1]{images/GAC.PNG}
         \caption{Exemple trouvé sur Twitter}
@@ -197,7 +197,7 @@ La technologie de reconnaissance faciale FaceNet développée par Google, utilis
 \subsubsection{Les sites de rencontre}
 Les sites de rencontrent se mettent de plus en plus dans la recherche de sosie. L'objectif est de permettre aux internautes de chercher un sosie de leur célébrité préférée ou de leur ex-partenaire ou de la personne leur plaisant mais étant déjà prise. Dans les sites de rencontre permettant ce genre de recherche nous pouvons citer Badoo et Match. 
 Badoo est assez frappant car les similitudes trouvés sont forte (même si certains correspondent à de faux comptes usurpant la photo d'une autre personne). (Figure 6) 
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
         \includegraphics[scale=1]{images/badoo.PNG}
         \caption{Exemple avec Badoo}
@@ -217,8 +217,121 @@ Ce qui manque à ces applications :
 Pour ce qui est du second point, Google a développé un algorithme permettant de chercher un sosie avec une oeuvre d’art de type peinture ou dessin exposé dans un musée. Il faudrait donc trouver une solution pour proposer un outil à plus large spectre, qui reprendrait l’existant mais pour le mener plus loin. 
 Ouvrir le retour de sosie à toute oeuvre : peinture, dessins, coloriage, photographie … Pour trouver une personne physique ou un personnage fictif en terme de sosie. Et, effectuer la recherche en dehors d'une base de données locale mais s'appuyer sur toutes les ressources dont disposes internet. 
 
+\subsection{Fouilles de données}
+Pour la partie fouilles de données nous utiliserons un algorithme de crawling web, ou en franais, robot d'indexation.
+Il s’agit de bots logiciels qui vont parcourir les sites internet avec
+pour objectif principal de les indexer. Le parcours se fait en profondeur, le
+logiciel accédant tour à tour à chaque pages ou sites externes grâce aux liens
+hypertextes présents dans la page en cours d’analyse (exemple : lien url) puis
+réitère l’opération. On peut ajouter des paramètres au bot afin qu’il recherche
+en même temps que sa "lecture". Dans notre cas, l'objectif sera de récupérer les images de certains sites ainsi que quelques informations liés à l'image (auteur, univers, etc...).
+
+On trouve facilement plusieurs crawler tel que :
+\begin{itemize}
+    \item \textbf{GoogleBot} est le crawler le plus connu. Il permet d’indexer les sites
+internet. Il fait principalement de la "lecture" de site. Dans notre cas c'est insuffisant puisque l'on veut faire une recherche dans les sites parcourus. 
+Dans le même ordre d’idée nous pouvons retrouver les bots des moteurs
+de recherche tel que BingBot, Slurp Bot (Yahoo), DuckDuckBot,
+BaiduSpider (Baidu est un moteur de recherche en chinois) ou encore
+YandexBot (utilisé pour les moteurs de recherches russes).
+\item \textbf{Facebook External Hit}, Facebook utilise ce crawler afin de permettre
+à ces utilisateurs, lorsqu’ils envoient (publient) un lien internet
+à un autre utilisateur du site, de récupérer et afficher certaines
+informations importantes comme par exemple : des extraits vidéos,
+des images ou des titres.
+Ce bot ne correspond pas à ce que nous souhaitons mettre en place.
+Par contre il pourrait être un élément de réponse à la question des
+droits d’auteurs. En effet, si l’outil était développé concrètement comment
+renvoyer l’image trouvé ainsi que toutes ses informations sans
+enfreindre les lois sur le droit à l’image ? Avec ce type de bot cela est
+possible car il permet de récupérer et afficher l’information choisi et
+de renvoyer vers sa localisation dans la toile.
+\item \textbf{HTTrack} est un logiciel aspirateur de site internet qui crée des miroirsdes sites Web pour une utilisation hors ligne.
+\item \textbf{Alexa Crawler} (développé par Amazon) va indexer les sites après
+les avoirs triés en fonctions de certains critères. Cela se rapproche de ce que nous souhaitons en apportant une dimension de classement selon des critères multiples qu’il est possible de sélectionner et filtrer.
+\item \textbf{Nutch} est un crawler destiné à un moteur de recherche open source.
+Son architecture est modulaire et permet de créer des plugins pour différentes phases du processus : récupération des données, analyse des documents, recherche, etc. Nutch est le crawler qui se rapproche le plus de la solution que nous
+cherchons.
+\end{itemize} 
+\subsection{Traitement et comparaison d'images}
+Ce qui est actuellement le plus courant est la comparaison faciale. La dernière technologie permettant de comparer des photographies avec des images est FaceNet. Ce dernier correspond exactement a ce que nous cherchons. 
+Pour ce qui est de la morphologie il n'existe pas encore d'algorithme efficace. Le plus simple restant la comparaison par pixel. 
+
+En mai 2015, Benjamin Billet a justement publié un article sur les différentes méthodes les plus connues et pratiquées pour la recherche d'image similaire. La comparaison d'image par empreinte ne permet pas d'obtenir de résultats concluant, car, elles cherchent à obtenir un identifiant par rapport aux couleurs et à leur disposition sur l'image et nullement sur des caractéristiques morphologiques. Le but étant de trouver des copies conforment entre image. 
+
+Par contre un histogramme de couleurs en moyenne pas bloc nous permettrait de comparer nos images pour trouver les plus proche. 
+
+\textbf{Histogramme des couleurs}
+Un histogramme des couleurs représente la distribution des couleurs dans l'image, c'est-à-dire le nombre de pixels dont la couleur appartient à une plage donnée, les différentes plages couvrant la totalité de l'espace colorimétrique (voir cet exemple très parlant). L'histogramme nous donne donc une représentation statistique de l'image, deux images étant analysées en comparant leurs histogrammes. Cette méthode, bien que très simple à implémenter, présente toutefois le désavantage d'être purement colorimétrique : en pratique, deux images aux sujets très différents peuvent avoir des histogrammes très proches.
+
+\textbf{Moyenne par bloc}
+Cette méthode est elle aussi assez simple et consiste à diviser l'image en blocs et à calculer la moyenne colorimétrique de chaque bloc. La comparaison se fait en calculant la moyenne des différences de couleur entre les blocs de chaque image, sous réserve que les deux images aient été hashées avec le même nombre de blocs. 
+\\\\
+Actuellement, les technologies développées permettent de comparer des images dans leur ensemble, de trouver celles identiques (grâce à une empreinte), ou de trouver un visage et de le comparer. La partie sur la morphologie est encore en recherche. On peut trouver des thèses traitant le sujet, mais pas de solution concluante développée. Ainsi pour notre problématique, si nous voulons comparer la morphologie de 2 personnes/personnages il nous faudra attendre une avancée technologique. 
+\\\\
+Alors, comment, à partir de la reconnaissance faciale et de la fouille de données, peut on identifier l’ensemble des sosies potentiels d’une personne ?
 \section{Solution proposée}
-\section{Domaine d'application}
+\subsection{Utilisation de la solution}
+\subsubsection{Besoins utilisateurs}
+Suite à notre étude il est ressorti deux grands besoins utilisateurs. Le premier étant de pouvoir trouver son sosie et l'autre de pouvoir aider à compléter la base de donnée. Et cela rentre bien avec l'objectif d'avoir une solution simple. La solution pourrait être proposé sur différentes plate forme : un site web et une application sur les différents supports mobiles. Pour permettre au gens d'avoir un avant goût de l'application et leur donner envie de l'utiliser cette dernière pourrait être utilisé de façon réduite sans avoir besoin de s'enregistrer. 
+\\ Partir sur une base de données collaborative est envisageable car, 84\% sont d'accord de partager leurs oeuvres à l'application si ces dernières servent uniquement à la recherche de sosies et qu'elles ne sont pas détournées de l'application. On peut voir cela comme une forme de partenariat: Les artistes remplissent notre base de données et en échange nous leur permettons de se faire connaître. Cela permet d'avoir une seconde source de provenance pour remplir la base en plus de la fouille de données. 
+\\De plus, notre proposition de pouvoir trier sa recherche de sosie (par genre : bande dessiné, comic, manga, ...) a fort plu au vu du résultat de notre étude :
+\begin{figure}[!ht]
+    \centering
+        \includegraphics[scale=1]{images/Memoire_sondage_1.PNG}
+        \caption{Diagramme du résultat du sondage pour la fonctionnalité de tri}
+    \end{figure}
+
+\subsubsection{Description fonctionnel}
+Ainsi nous avons deux grandes fonctionnalités, chacune d'elle peut être utilisé de façon limité si l'utilisateur n'a pas de compte. 
+\begin{itemize}
+    \item L'utilisateur cherche son sosie. Il va renseigner ses informations, choisir s'il veut trier les résultats et uploader sa photographie. 
+    \item L'utilisateur veut rajouter ses oeuvres dans notre base, il va donc renseigner des informations sur celles-ci : contexte, description, lien pour le suivre, lien de contact, site web... 
+\end{itemize}
+Voici une description plus en détail de comment cela va se passer en interne lorsqu'un utilisateur fait une recherche de sosie : 
+\begin{figure}[!ht]
+    \centering
+    \includegraphics[scale=0.3]{images/diag_scenar_mem_1.png}
+    \caption{}
+\end{figure}
+De plus, avoir un compte permettra aux utilisateurs de mettre en favoris les résultats qui leur plaisent suite à la recherche de sosie. 
+
+\subsection{Cadrage Technique}
+\subsubsection{Architecture}
+Pour répondre à ces différentes utilisations voici le schéma d'architecture de notre solution. 
+
+\begin{figure}[!ht]
+    \centering
+        \includegraphics[scale=0.3]{images/Architecture_memoire_VILLER_.png}
+        \caption{Architecture de notre solution}
+    \end{figure}
+    
+\textbf{L'utilisateur} va pouvoir utiliser notre solution via 2 types de plate formes : un site web ou une application mobile. Les actions et fonctionnalités proposés sont les mêmes entre l'un et l'autre. L'utilisation va donc faire une demande au serveur web, autre que la partie gestion de son compte, il va soit faire une demande de recherche de sosie soit importé une à plusieurs images pour remplir la base. \\ \textbf{Le serveur web} va faire appel au serveur applicatif de comparaison en fonction de l'action demandé par l'utilisateur. \\ \textbf{Le serveur applicatif de comparaison} va donc traduire la ou les images reçues au format pour notre base de données et faire appel à cette dernière pour les enregistrer dessus. Dans le cadre de la recherche d'un sosie, le serveur applicatif de comparaison effectuera une requête auprès de la base en prenant en compte les paramètres envoyé par le serveur web. Il traitera les retours reçus de la base et enverra les meilleurs résultats au serveur web qui se chargera de construire la page web ou la page d'application pour l'utilisateur et de li afficher les résultats ainsi que leurs informations. 
+\\ \textbf{Le serveur applicatif d'alimentation}, quant à lui, s'occupera de parcourir internet de façon périodique. Et récupérera les images ainsi que leur sources. Il les traitera, grâce à la reconnaissance faciale il pourra faire un pré-tri pour ne garder que celle contenant une personne ou un personnage sur l'image. Ensuite il évaluera les images en fonction de leur genre et enfin il les traduira en un format correct pour la base de données et renseignera ses informations avec ce qu'il aura trouvé. \\ Pour éviter les problèmes de droits d'auteurs l'objectif est d'étudier une image, d'en déduire certaines informations et ensuite de la "traduire" en un code qui sera utiliser pour la comparaison et de remplir tous les champs possible de l'objet de la base. Tout le traitement de l'image est donc fait avant son enregistrement. Enfin, une fois le traitement fini, on enregistrera uniquement le résultat de notre recherche et traduction et le lien de l'image. En aucun cas nous n'enregistrerons l'image puisqu'elle n'est pas le fruit de notre travail. Pour l'afficher dans le résultat via le serveur web, nous nous baserons sur la solution de Facebook, permettant de faire un affichage réduit et un lien qui renvoie à l'image d'origine. 
+\\ \\ 
+Ainsi dans la base de données nous aurons des images ou des liens d'images avec des informations liés à leur traitement qui permettront ensuite de faire facilement leur comparaison. 
+\subsubsection{Sécurité}
+Voici quelques actions que nous pourrions mettre en place pour avoir une application sécurisé : 
+\begin{itemize}
+    \item Vérifier le format et les fichiers reçus avec par exemple un antivirus => éviter l'envoie de code frauduleux et de script malveillant dissimulé dans l'envoie d'un fichier via formulaire 
+    \item Sécuriser les serveurs avec un pars feux 
+    \item Limiter les ports utilisés
+    \item Mettre en place des proxys
+    \item Utiliser un protocole TLS plutôt que SSL pour l'administration des serveurs
+\end{itemize}
+Il s'agit bien sûr d'une liste non exhaustive. 
+
+\subsubsection{Budget}
+Cette solution est un projet communautaire qui débouchera sur une application gratuite pour tous. Pour la partie développement nous aurons une équipe de développeur bénévole sur le projet. \\
+Pour pouvoir payer tous les coûts de licence, serveurs, domaine, ... Nous ferons un appel de don sur une plate forme de don comme ko-fi.com. Cette plateforme à l'avantage de proposer de faire des dons sous le format du prix d'un café. Les personnes peuvent ainsi payer un ou plusieurs café(s) pour soutenir le projet. Nous comptons sur la communauté cosplay mondiale pour financer ce projet. Il est en plus envisageable de travaille sur des partenariats avec des associations cosplay, des boutiques et entreprises cosplay ou même avec des cosplayers professionnels. 
+Parmi les participants au financement seront choisi une poignée de beta-testeur de l'application et du site. 
+
+\subsubsection{Planning de développement de la solution}
+
+\subsection{Contraintes}
+\subsubsection{Cadrage juridique}
+\subsubsection{Contraintes Organisationnelles}
+\subsubsection{Contraintes techniques}
 \newpage
 \addcontentsline{toc}{section}{Conclusion}
 \section*{Conclusion}
@@ -230,24 +343,24 @@ Ouvrir le retour de sosie à toute oeuvre : peinture, dessins, coloriage, photog
 
 \section{Annexes}
 Annexe 1 : 
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
     \includegraphics[scale=0.8]{images/Res2GI.PNG}
     \caption{Résultat de la recherche des images similaires par Google pour la Figure 1}
 \end{figure}
 
 Annexe 2 : 
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
         \includegraphics[scale=0.45]{images/ResS1.PNG}
         \caption{Premier sosie}
     \end{figure}
-    \begin{figure}[!h]
+    \begin{figure}[!ht]
     \centering
         \includegraphics[scale=0.3]{images/ResS12.PNG}
         \caption{Deuxième sosie}
     \end{figure}
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
         \includegraphics[scale=0.3]{images/ResS13.PNG}
         \caption{Troisième sosie}
@@ -255,14 +368,14 @@ Annexe 2 :
     
   \newpage
 Annexe 3 : 
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
         \includegraphics[scale=1]{images/ResS2.PNG}
         \caption{Résultat du second site}
     \end{figure} 
 \newpage
 Annexe 4 :
-\begin{figure}[!h]
+\begin{figure}[!ht]
     \centering
         \includegraphics[scale=1]{images/ResS3.PNG}
         \caption{Résultat du troisième site}
