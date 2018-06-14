@@ -69,7 +69,7 @@
 \end{titlepage}
 
 \newpage
-	\pagenumbering{arabic}
+	
 %\addcontentsline{toc}{section}{Introduction}
 %\section*{Introduction}
 
@@ -77,9 +77,8 @@
 %\\ \\
 
 %\newpage
-
+\pagenumbering{arabic}
 \addcontentsline{toc}{section}{Glossaire}
-\newpage
 \section*{Glossaire}
 \begin{description}
 \item [Sosie :] Personne qui a une parfaite ressemblance avec une autre au point qu'on peut les confondre.
@@ -90,12 +89,13 @@
 
 \end{description}
 
-\addcontentsline{toc}{section}{Introduction}
 \newpage
+\addcontentsline{toc}{section}{Introduction}
+
 \section*{Introduction}
 Quand on parle de sosie, on pense généralement à la personne qui pourrait être notre jumeau. Mais si nous agrandissions le champ de recherche ? Au lieu de se limiter à des êtres humains réels, si nous pouvions chercher nos sosies dans le domaine du dessin animé, des peintures, des personnages de films, etc. Ne serait-ce pas plus intéressant ? 
 \\\\
-En premier lieu nous regarderons la pertinence de ses questions. Est-ce qu'une communauté aurait besoin d'un tel outil, et est-ce que pense, de manière plus large le public. 
+En premier lieu nous regarderons la pertinence de ses questions. Est-ce qu'une communauté aurait besoin d'un tel outil, et qu'est ce qu'en pense, de manière plus large le public. 
 \\\\
 Dans un second temps nous répondrons aux questions suivantes : qu'existe-t-il actuellement pour permettre de trouver un sosie ? Comment fonctionnent ces solutions ? Quelles sont leurs limites ? Et ainsi faire un état de l'art dans le domaine des sosies. Nous regarderons aussi ce qui existe en termes de crawler, lesquels peuvent être pertinent pour nous ? Et enfin, dans cette partie, nous aborderons les différentes techniques de comparaison d'images. 
 \\\\
@@ -107,7 +107,7 @@ Alors, comment, à partir de la reconnaissance faciale et de la fouille de donn�
 
 
 \newpage
-\section{Présentation de la problématique}
+\section{Périmètre d'étude}
 \subsection{Enquête}
 La première étape de la recherche a été de mener une étude afin d'étudier la pertinence du sujet.
 Cette dernière a permis d'avoir l'avis de 487 personnes sur le projet en question. L'étude a été réalisée via un Google form et partagée sur Facebook et par mail. 
@@ -129,7 +129,7 @@ Rechercher son sosie par curiosité, ou pour toute autre raison, même lorsque l
 \\ \\
 
 \subsection{Cas d'application}
-70,84\% des cosplayers font parfois attention à cosplayer un personnage qui a une morphologie proche de la leur. Et parmi eux, un peu moins de la moitié trouve cela important et y font attention. Bien que le cosplay soit un loisir où chacun doit se sentir libre d'incarner le héros de son choix, on voit qu'il y a une forte tendance chez les cosplayer à faire attention à la similitude entre eux et les personnages choisis. 
+70,84\% des cosplayers font parfois attention à cosplayer un personnage qui a une morphologie proche de la leur. Et parmi eux, un peu moins de la moitié trouve cela important et y font scrupuleusement attention. Bien que le cosplay soit un loisir où chacun doit se sentir libre d'incarner le héros de son choix, on voit qu'il y a une forte tendance chez les cosplayer à faire attention à la similitude entre eux et les personnages choisis. 
 \\ \\
 Bien qu'environ 83\% des cosplayers fonctionnent au "coup de coeur" et choisissent leur projet cosplay parmi les personnages qu'ils connaissent et leur plaisent. Ils sont tout autant à avoir répondu qu'ils seraient intéressés à accéder à une liste de personnages leur ressemblant. Ce projet n'est pas nécessaire à la pratique cosplay mais permettrait d'ouvrir de nouveaux champs d'études, en effet la réalisation de cosplay ne se ferait plus que sur des personnages connus à l'avance. Mais au contraire serait un point d'accès pour découvrir un nouvel univers. Cela se ressent dans les commentaires renseignés lors de l'étude : avoir accès à une liste de personnage leur ressemblant permettrait de "favoriser le choix de costume par rapport à notre corps, pour les rendre plus appropriés", mais encore que "c'est une bonne chose, cela peut permettre d'avoir plus de possibilités" ou alors peut être "très bien pour les gens ayant du mal à faire un choix ou n'ayant pas d'idée", ... Donc, proposer une liste de personnage ressemblant à la photographie d'une personne serait une amélioration dans la communauté cosplay.  
 
@@ -143,7 +143,7 @@ Le sujet mérite donc d'être approfondi.
 
 \textit{Comment, à partir de la reconnaissance faciale et de la fouille de données, peut-on identifier l'ensemble des sosies potentiels d'une personne ? }
 \section{État de l'art}
-Dans un premier temps, il convient d'étudier les solutions existantes pouvant en partie ou complètement à cette problématique. 
+Dans un premier temps, il convient d'étudier les solutions existantes pouvant, en partie ou complètement, répondre à cette problématique. 
 L'objectif est de trouver une solution permettant de renseigner en entrée une photographie/image et d'obtenir à partir de celle-ci, une image/photographie similaire à celle-ci. De plus, nous souhaitons pouvoir comparer la morphologie ainsi que des caractéristiques physiques tels que la couleur de peau, la couleur des yeux ou la couleur des cheveux. Et tout cela, en parcourant le plus grand nombre de résultats possible, issu directement de la toile. Et enfin, les images en retours ne doivent pas être uniquement des photographies de personnes réelles.
 
 \subsection{Solutions existantes et limites}
@@ -152,7 +152,7 @@ Les moteurs de recherchent par mots clefs ne sont pas pertinents dans le cadre d
 \subsubsection{Les moteurs de recherches d'images inversées}
 Les moteurs de recherches d'images inversées permettent de mettre en entrée une image et en sortie de lister tous les sites utilisant cette image. Cela ne correspond pas à ce que nous cherchons. Mais l'algorithme utilisé pour parcourir le web à la recherche de tous les sites utilisant une image peut être intéressant. 
 \subsubsection{Recherche par couleur}
-Des sites proposent de mettre en entrée des couleurs et en sorties de lister des images possédant les couleurs en question. En fonction des sites les images peuvent posséder d'autres couleurs ou n'ont que celles sélectionnées, par exemple sur le site labs.tineye.com/multicolr. Cela ne correspond pas non plus à notre recherche. 
+Des sites proposent de mettre en entrée des couleurs et en sorties de lister des images possédant les couleurs en question. En fonction des sites les images peuvent posséder d'autres couleurs ou n'ont que celles sélectionnées, comme par exemple sur le site labs.tineye.com/multicolr. Cela ne correspond pas non plus à notre recherche. 
 \subsubsection{Google Image}
 Google est connu pour permettre la recherche par mot clef. Mais il permet aussi de mettre en entrée une image pour trouver les images similaires. Faisons l'expérience avec 2 images très différentes. La première provient d'une recherche par mots clefs sur Google Image (Figure 1) et la seconde est une photographie de moi dont je suis l'auteur (Figure 2).
     \begin{figure}[!ht]
@@ -185,7 +185,7 @@ Il s'agit de jeunes filles d'un âge plus ou moins proche de Nathanaëlle, leurs
 D'après les termes d'utilisations du site, nous pouvons apprendre que seul le visage (à partir de la photo) sert à faire la recherche. Cette dernière sera faite parmi la base de données du site. Rien n'est dit par rapport au genre, mais puisqu'il faut le renseigner nous pouvons nous questionner si ce dernier ne permettait pas de faire un premier filtre. Ce site a pour but de permettre à des sosies de se trouver puis de se rencontrer. Cette plate-forme se limite à une base de données interne et à des personnes physiques, ce qui est différent de notre objectif.
 Mais il semble intéressant d'étudier comment fonctionne l'algorithme de ce site. 
 \\\\
-Il existe d'autres sites tels que pictriev.com qui déduit si nous sommes un homme ou une femme ainsi que notre âge et nous fournis les célébrités auxquelles nous ressemblons le plus. Nous pouvons constater en annexe 3 que ce dernier n'est pas au point. Il en va de même pour celebslike.me (annexe 4). Tous les 2 sont des sites permettant de chercher son sosie parmi les personnalités connues. Encore une fois cela ne va pas avec nos objectifs. Au vu des résultats, les algorithmes d'être performant.
+Il existe d'autres sites tels que pictriev.com qui déduit si nous sommes un homme ou une femme ainsi que notre âge et nous fournis les célébrités auxquelles nous ressemblons le plus. Nous pouvons constater en annexe 3 que ce dernier n'est pas au point. Il en va de même pour celebslike.me (annexe 4). Tous les 2 sont des sites permettant de chercher son sosie parmi les personnalités connues. Encore une fois cela ne va pas avec nos objectifs. Au vu des résultats, les algorithmes sont loin d'être performant.
 
 \subsubsection{Google Arts \& Culture}
 Google Arts \& Culture est une application américaine qui permet de trouver son sosie en oeuvre d’art. Google Arts \& Culture a collaboré avec plus de 1 200 musées, galeries et institutions de 70 pays pour rendre leurs expositions accessibles à tous en ligne, sûrement aussi pour avoir une base de données interne à interroger. Malheureusement cette fonctionnalité "trouver son double dans une oeuvre d'art" de l'application n'est disponible qu'aux États unis et un test n'a donc pas pu être possible. Mais nous pouvons trouver des articles qui en parlent. Le fonctionnement est simple, il suffit de charger une photographie ou un autoportrait et l'algorithme va analyser les traits du visage à plus de 70 000 portraits provenant de collection du monde entier. Twitter a été rempli de test des internautes américains dont voici un exemple bluffant (Figure 5).
@@ -249,12 +249,12 @@ informations importantes par exemple : des extraits vidéos,
 des images ou des titres.
 Ce bot ne correspond pas à ce que nous souhaitons mettre en place.
 Par contre il pourrait être un élément de réponse à la question des
-droits d’auteurs. En effet, si l’outil était développé concrètement comment
+droits d’auteurs. En effet, si l’outil était développé comment
 renvoyer l’image trouvée ainsi que toutes ses informations sans
 enfreindre les lois sur le droit à l’image ? Avec ce type de bot, cela est
 possible car il permet de récupérer et afficher l’information choisie et
 de renvoyer vers sa localisation dans la toile.
-\item \textbf{HTTrack} est un logiciel aspirateur de site internet qui crée des miroirsdes sites Web pour une utilisation hors ligne.
+\item \textbf{HTTrack} est un logiciel aspirateur de site internet qui crée des miroirs des sites Web pour une utilisation hors ligne. Cela ne nous intéresse pas. 
 \item \textbf{Alexa Crawler} (développé par Amazon) va indexer les sites après
 les avoirs triés en fonctions de certains critères. Cela se rapproche de ce que nous souhaitons en apportant une dimension de classement selon des critères multiples qu’il est possible de sélectionner et filtrer.
 \item \textbf{Nutch} est un crawler destiné à un moteur de recherche open source.
@@ -270,12 +270,12 @@ En mai 2015, Benjamin Billet a justement publié un article sur les différentes
 Par contre un histogramme de couleurs en moyenne pas bloc nous permettrait de comparer nos images pour trouver les plus proches. 
 
 \textbf{Histogramme des couleurs}
-Un histogramme des couleurs représente la distribution des couleurs dans l'image, c'est-à-dire le nombre de pixels dont la couleur appartient à une plage donnée, les différentes plages couvrant la totalité de l'espace colorimétrique (voir cet exemple très parlant). L'histogramme nous donne donc une représentation statistique de l'image, deux images étant analysées en comparant leurs histogrammes. Cette méthode, bien que très simple à implémenter, présente toutefois le désavantage d'être purement colorimétrique : en pratique, deux images aux sujets très différents peuvent avoir des histogrammes très proches.
+Un histogramme des couleurs représente la distribution des couleurs dans l'image, c'est-à-dire le nombre de pixels dont la couleur appartient à une plage donnée, les différentes plages couvrant la totalité de l'espace colorimétrique. L'histogramme nous donne donc une représentation statistique de l'image, deux images étant analysées en comparant leurs histogrammes. Cette méthode, bien que très simple à implémenter, présente toutefois le désavantage d'être purement colorimétrique : en pratique, deux images aux sujets très différents peuvent avoir des histogrammes très proches.
 
 \textbf{Moyenne par bloc}
 Cette méthode est elle aussi assez simple et consiste à diviser l'image en blocs et à calculer la moyenne colorimétrique de chaque bloc. La comparaison se fait en calculant la moyenne des différences de couleur entre les blocs de chaque image, sous réserve que les deux images aient été hashées avec le même nombre de blocs. 
 \\\\
-Actuellement, les technologies développées permettent de comparer des images dans leur ensemble, de trouver celles identiques (grâce à une empreinte), ou de trouver un visage et de le comparer. La partie sur la morphologie est encore en recherche. On peut trouver des thèses traitant le sujet, mais pas de solution concluante développée. Ainsi pour notre problématique, si nous voulons comparer la morphologie de 2 personnes/personnages il nous faudra attendre une avancée technologique. 
+Actuellement, les technologies développées permettent de comparer des images dans leur ensemble, de trouver celles identiques (grâce à une empreinte), ou de trouver un visage et de le comparer. La partie sur la morphologie est encore en recherche. On peut trouver des thèses traitant le sujet, mais pas de solution concluante existante. Ainsi pour notre problématique, si nous voulons comparer la morphologie de 2 personnes/personnages il nous faudra attendre une avancée technologique. 
 \\\\
 Alors, comment, à partir de la reconnaissance faciale et de la fouille de données, peut-on identifier l’ensemble des sosies potentiels d’une personne ?
 
@@ -290,7 +290,7 @@ Aujourd'hui il n'existe pas de solution à notre problématique. Voici donc une 
 
     
  \subsection{Fouilles périodique} 
- En utilisant un crawler, l'algorithme va parcourir différents sites web et récupérer les différentes images trouvées. Il faudra ensuite trier les images pour ne garder que celles nous intéressant : celles contenant une personne/ un personnage. Pour cela on utilisera la reconnaissance faciale, ainsi l'on pourra écarter les images ne contenant aucun portrait et celles contenant plusieurs portraits. Les images conservées seront converties en un "code" permettant ensuite leurs comparaisons et seront enregistrées avec toutes sortes d'informations récupérées sur le site, comme son URL. Attention on n'enregistre pas l'image par contre, uniquement ses informations et le "code" produit par notre algorithme. Tout ceci sera enregistré dans la base de données générale de l'application. 
+ En utilisant un crawler, comme par exemple Nutch, en le configurant d'un plugin de récupération d'images et d'informations liées à celles-ci, l'algorithme va parcourir différents sites web et récupérer les différentes images trouvées. Il faudra ensuite trier les images pour ne garder que celles nous intéressant : celles contenant une personne/ un personnage. Pour cela on utilisera la reconnaissance faciale, par exemple FaceNet que l'on aurait configurer aussi bien pour les oeuvres d'art que pour d'autres univers tel que le comics, les jeux vidéos, etc,  ainsi l'on pourra écarter les images ne contenant aucun portrait et celles contenant plusieurs portraits. Les images conservées seront converties en un "code" permettant ensuite leurs comparaisons et seront enregistrées avec toutes sortes d'informations récupérées sur le site, comme son URL. Attention on n'enregistre pas l'image par contre, uniquement ses informations et le "code" produit par notre algorithme. Tout ceci sera enregistré dans la base de données générale de l'application. Ce "code" sera le résultat d'un traitement pouvant permettre la comparaison ensuite. Comme par exemple, pour faire une comparaison colorimétrique. 
  \subsection{Actions utilisateur}
  L'utilisateur aura 3 types d'action possible via l'interface. 
  \begin{itemize}
@@ -299,28 +299,28 @@ Aujourd'hui il n'existe pas de solution à notre problématique. Voici donc une 
      \item \textbf{Recherche de sosie} : L'utilisateur pourra faire une recherche de sosies de façon générale ou spécifique grâce à la fonctionnalité de tri permettant de chercher un sosie de en fonction d'univers précis. 
  \end{itemize}
  \subsection{Enregistrements d'images utilisateur}
- En plus de récupérer des images via un crawler sur le web, la base de données pourra être remplie de façon collaborative par les utilisateurs. Toutes les images uploader par les utilisateurs sur l'application seront testés pour vérifier qu'il s'agit bien d'une personne grâce à la reconnaissance faciale et ensuite elles seront aussi converties un "code" pour être enregistré dans la base de données. Par contre, à l'inverse des images récupérées sur les sites web parcourus, ces images seront enregistrées en local dans une base de données image. Ainsi chaque "code" sauvegardé dans la base de données générale référencera une image enregistrée dans la base de données image. 
+ En plus de récupérer des images via un crawler sur le web, la base de données pourra être remplie de façon collaborative par les utilisateurs. Toutes les images uploader par les utilisateurs sur l'application seront testés pour vérifier qu'il s'agit bien d'une personne grâce à la reconnaissance faciale et ensuite elles seront aussi converties en un "code" pour être enregistré dans la base de données. Par contre, à l'inverse des images récupérées sur les sites web parcourus, ces images seront enregistrées en local dans une base de données image. Ainsi chaque "code" sauvegardé dans la base de données générale, lors d'un ajout d'image par un utilisateur, référencera une image enregistrée dans la base de données image. 
  \subsection{Gestions utilisateur}
  Les modifications que l'utilisateur souhaitera apporter en dehors du changement de sa photo seront transcrites en requête envoyée à la base de données.  Cela permettant la création, récupération, modification et suppression d'un compte. 
  \subsection{Comparaison}
- La comparaison se fait sur la photographie liée au compte de l'utilisateur. Grâce à un algorithme de comparaison d'image, les différents "codes" de chaque image seront comparés. On en gardera les meilleurs résultats pour ensuite les afficher. Les différents types d'algorithmes de comparaison d'images transcrivent la plupart du temps les images en un "code", c'est ce dernier qui permet la comparaison et de savoir si les images sont complémentaires et à combien de pourcentage. Pour plus d'exactitude dans la comparaison, on peut aussi comparer les visages entre eux. Grâce à la reconnaissance faciale, il faudrait récupérer la zone du visage, voir la tête tout entière et comparer ces deux zones entre elles pour voir le complémentarité. Au même titre il faudrait pouvoir comparer la morphologie de chacun. Mais pour l'heure il n'existe pas de "reconnaissance morphologique" aboutie en termes d'algorithme. 
+ La comparaison se fait sur la photographie liée au compte de l'utilisateur. Grâce à un algorithme de comparaison d'image, comme par exemple la comparaison par bloc de la colorimétrie, les différents "codes" de chaque image seront comparés. On en gardera les meilleurs résultats pour ensuite les afficher. Les différents types d'algorithmes de comparaison d'images transcrivent la plupart du temps les images en un "code", c'est ce dernier qui permet la comparaison et de savoir si les images sont complémentaires et à combien de pourcentage. Pour plus d'exactitude dans la comparaison, on peut aussi comparer les visages entre eux. Grâce à la reconnaissance faciale, avec FaceNet par exemple, on pourrait calculer la complémentarité entre 2 visages. Au même titre il faudrait pouvoir comparer la morphologie de chacun. Mais pour l'heure il n'existe pas de "reconnaissance morphologique" aboutie en termes d'algorithme. 
 
 \subsection{Affichage}
-L'affichage des images enregistrées dans la base de données image pourront simplement être affichées. Pour ce qu'y est des images récupérées sur la toile on pourrait utiliser le système de Facebook, permettant d'afficher une miniature de l'image et un lien cliquable vers le site et l'image. Ou alors nous pourrions afficher dans notre page la page internet du site hébergeant l'image. 
+L'affichage des images enregistrées dans la base de données image pourront simplement être affichées dans notre application. Pour ce qu'y est des images récupérées sur la toile on pourrait utiliser le système de Facebook, permettant d'afficher une miniature de l'image et un lien cliquable vers le site et l'image. Ou alors nous pourrions intégrer une page web dans notre application et ainsi intégrer la page web contenant l'image. Ou encore utiliser le même affichage que Google Images, permettant d'afficher une image puis d'accéder au site la contenant. 
 \subsection{Contraintes légales}
 Pour éviter les problèmes de droits d'auteurs, nous ne pouvons pas enregistrer en local les images trouvées sur les sites web. Comme notre objectif est de comparer les images, il suffit de "convertir" l'image en un code. Ce code que nous obtenons peut, lui, être enregistré en local. Pour retrouver et afficher l'image nous ne garderons d'elle que le lien URL pour la retrouver. \\ \\
-Dans la législation française, le droit d'auteur permet à un auteur de choisir de quelle manière si son oeuvre peut être partagée, reproduite, réutiliser ... D'un auteur à l'autre, ses autorisations changent. Enregistrer une image pour la partager à un public dans le cadre de notre application peut être illégal en fonction des droits décider par les auteurs. Par contre référencer les sites où ont été partagées ces images n'est pas une infraction. \\ 
-De plus, les articles 226-1 à 226-8 du Code civil précisent que « tout individu jouit d’un droit au respect de sa vie privée ainsi que d’un droit à l’image. En vertu de ces dispositions, il va de soi que la publication ou la reproduction d’une image (photographie ou vidéo) sur laquelle une personne est facilement reconnaissable n’est autorisée qu’avec son consentement préalable, et ce, que l’image soit préjudiciable ou non. Nous ne pouvons donc pas nous permettre de réutiliser des photographies librement dans notre application. \\ 
-La solution qu'utilise Facebook est donc a exploité. Quant aux images uploadées par les utilisateurs, il suffira de leur faire accepter le droit de diffusion dans l'application de leurs images et photographies. 
+Dans la législation française, le droit d'auteur permet à un auteur de choisir de quelle manière son oeuvre peut être partagée, reproduite, réutiliser ... D'un auteur à l'autre, ses autorisations changent. Enregistrer une image pour la partager à un public dans le cadre de notre application peut être illégal en fonction des droits décidés par les auteurs. Par contre référencer les sites où ont été partagées ces images n'est pas une infraction. \\ 
+De plus, les articles 226-1 à 226-8 du Code civil précisent que « tout individu jouit d’un droit au respect de sa vie privée ainsi que d’un droit à l’image. En vertu de ces dispositions, il va de soi que la publication ou la reproduction d’une image (photographie) sur laquelle une personne est facilement reconnaissable n’est autorisée qu’avec son consentement préalable, et ce, que l’image soit préjudiciable ou non. Nous ne pouvons donc pas nous permettre de réutiliser des photographies librement dans notre application. \\ 
+La solution qu'utilise Facebook ou Google est donc a exploiter. Quant aux images uploadées par les utilisateurs, il suffira de leur faire accepter le droit de diffusion dans l'application de leurs images et photographies. 
 
 \newpage
 \addcontentsline{toc}{section}{Conclusion}
 \section*{Conclusion}
-Il n'existe à ce jour, aucune solution permettant de trouver de chercher son sosie parmi des personnes imaginaires. Il existe des solutions plus ou moins réussis qui permettent de trouver son sosie parmi des être humains réelles ou parmi des stars. Mais dans le domaine du fictif le marché est encore jeune et la concurrence est faible. Pour l'instant une seule application réussi a été recensé et ne fonctionne que pour les oeuvres d'art. 
+Il n'existe à ce jour, aucune solution permettant de chercher son sosie parmi des personnes imaginaires. Il existe des solutions plus ou moins réussis qui permettent de trouver son sosie parmi des être humains réelles ou parmi des stars. Mais dans le domaine du fictif le marché est encore jeune et la concurrence est faible. Pour l'instant une seule application réussi a été recensé et ne fonctionne que pour les oeuvres d'art. De plus, la grande majorité des solutions existantes sont privés, nous ne pouvons donc pas récupérer leur méthodologie. 
 \\ \\ 
-Du côté du public les retours sont positifs. Les gens sont de nature curieuse et pense que que notre solution serait un bon amusement. Quant à la communauté cosplay, une telle solution apporterait une aide précieuse et permettrait de développer la communauté. 
+Du côté du public les retours sont positifs. Les gens sont de nature curieuse et pensent que que notre solution serait intéressante. Quant à la communauté cosplay, une telle solution apporterait une aide précieuse et permettrait de développer cette dernière. 
 \\ \\
-La grande majorité des solutions existantes sont privés, nous ne pouvons donc pas récupérer leur méthodologie. Suite à notre réflexion, grâce à notre solution architecturale il devrait être possible de créer une application répondant à notre besoin. 
+Suite à notre réflexion, grâce à notre solution architecturale, il devrait être possible de créer une application répondant à notre besoin. Et cela, en reprenant des algorithmes existant et en les spécifiant un peu pour qu'il s'applique à notre cas. 
 \\ \\ 
 Pour ce qui est de la comparaison morphologique il faudra par contre attendre un développement plus poussé des technologies et algorithme actuel ou bien tester des solutions proposées dans certaines thèses. 
 \newpage
@@ -376,8 +376,8 @@ Sources :
     \item \textbf{CelebsLike.Me} - \textit{Site de recherche de sosie} - \url{http://www.celebslike.me/}
     \item \textbf{Badoo} - \textit{Site de rencontre} - \url{https://badoo.com/}
     \item \textbf{Match / Meetic} - \textit{Site de rencontre} - \url{https://www.meetic.fr/}
-    \item \textbf{Numerama} - \textit{Article sur la reconnaissance faciale} - \url{https://www.numerama.com/tech/126861-openface-un-script-de-reconnaissance-faciale-open-source.html}
-    \item \textbf{Medium} - \textit{Article sur la reconnaissance faciale} - \url{https://medium.com/@vinayakvarrier/building-a-real-time-face-recognition-system-using-pre-trained-facenet-model-f1a277a06947 }
+    \item \textbf{Numerama} - \textit{Article sur la reconnaissance faciale} - \url{https://www.numerama.com/tech/126861-openface-un-script-de-reconnaissance-} \url{faciale-open-source.html}
+    \item \textbf{Medium} - \textit{Article sur la reconnaissance faciale} - \url{https://medium.com/@vinayakvarrier/building-a-real-time-face-recognition-} \url{system-using-pre-trained-facenet-model-f1a277a06947 }
     \item \textbf{IDEMIA } - \textit{Article sur la reconnaissance faciale } - \url{https://www.morpho.com/fr/reconnaissance-faciale }
     \item \textbf{OpenFace API Docs} - \textit{Documentation de OpenFace} - \url{http://openface-api.readthedocs.io/en/latest/}
     \item \textbf{u Ottawa } - \textit{Article sur le crawling} - \url{http://ssrg.site.uottawa.ca/docs/CASCON2013.pdf }
@@ -389,10 +389,7 @@ Sources :
     \item \textbf{CFC Centre Français d'exploitation du droit de Copie} - \textit{Droit d'auteur} - \url{http://www.cfcopies.com/juridique/droit-auteur }
     \item \textbf{economie.gouv.fr} - \textit{Droit d'auteur} - \url{https://www.economie.gouv.fr/files/files/directions_services/apie/propriete_intellectuelle/publications/utiliser_contenu_etapes_essentielles.pdf }
     \item \textbf{Service Public} - \textit{Droit d'auteu}r - \url{https://www.service-public.fr/professionnels-entreprises/vosdroits/F23431 }
-    
-    
-    
-    \item \textbf{ } - \textit{ } - \url{ }
+   
     
     
 \end{itemize}
